@@ -1,0 +1,17 @@
+node_modules/
+.output/
+.wxt/
+*.zip
+.env
+.DS_Store
+.vscode/
+.idea/
+.cache/
+.tmp/
+coverage/
+.env.*
+*.log
+profile-*/
+ui-evidence*/
+connection-evidence*/
+
