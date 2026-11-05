@@ -1,17 +1,17 @@
 # elo — Gerenciador de Instagram
 
-Esta cópia contém somente o código-fonte, preparado para um futuro repositório privado. Não inclui a pasta compilada `extensao` mencionada abaixo. Para gerar a extensão, execute `npm ci` e `npm run build`; carregue `.output/chrome-mv3` na página de extensões. Nenhum repositório remoto foi criado nesta preparação.
+**Versão 0.1.1 · experimental · licença MIT.** A extensão pronta para instalar fica em [Releases](https://github.com/heluiz/elo-instagram/releases/latest); este repositório contém o código-fonte.
 
-Versão 0.1.1 experimental, em português. Extensão para computador, baseada no [IgDiff](https://github.com/mzhao1599/igdiff), sob licença MIT. O projeto original e seus autores estão identificados em LICENSE e NOTICE.md.
+Extensão para Chrome e Edge no computador, em português, baseada no [IgDiff](https://github.com/mzhao1599/igdiff), sob licença MIT. O projeto original e seus autores estão identificados em LICENSE e NOTICE.md.
 
 ## Instalar sem programar
 
-No pacote entregue, a pasta **extensao** já está compilada. Não precisa instalar Python, Node.js ou npm para usá-la.
+A extensão já vem compilada no ZIP de cada [Release](https://github.com/heluiz/elo-instagram/releases/latest). Não precisa instalar Python, Node.js ou npm para usá-la.
 
-1. Extraia todo o ZIP para uma pasta permanente.
+1. Baixe `elo-instagram-0.1.1-chrome.zip` em [Releases](https://github.com/heluiz/elo-instagram/releases/latest) e extraia todo o conteúdo para uma pasta permanente.
 2. No Chrome, abra `chrome://extensions`. No Edge, abra `edge://extensions`.
 3. Ative **Modo do desenvolvedor** e escolha **Carregar sem compactação**.
-4. Selecione a pasta **extensao**, onde fica o arquivo `manifest.json`.
+4. Selecione a pasta onde fica o arquivo `manifest.json`.
 5. Abra `https://www.instagram.com/` e entre na conta que deseja analisar.
 6. Clique no ícone do elo e em **Atualizar agora**.
 
@@ -19,7 +19,7 @@ A extensão abre um painel lateral. Se já havia uma aba do Instagram aberta dur
 
 ## Atualizar uma instalação existente
 
-Exporte os dados antes de atualizar. Copie o conteúdo da nova pasta **extensao** para a mesma pasta da versão já carregada, mantendo o caminho. Em chrome://extensions ou edge://extensions, clique em **Recarregar**. Recarregue também a aba do Instagram. Evite desinstalar a extensão, pois isso pode apagar os registros locais.
+Exporte os dados antes de atualizar. Extraia o conteúdo do novo ZIP sobre a mesma pasta da versão já carregada, mantendo o caminho. Em chrome://extensions ou edge://extensions, clique em **Recarregar**. Recarregue também a aba do Instagram. Evite desinstalar a extensão, pois isso pode apagar os registros locais.
 
 ## O que esta versão faz
 
@@ -56,7 +56,7 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ANALISE-PROJETOS.md](docs/ANALISE
 
 As correções da versão 0.1.1 estão descritas em [docs/REVISAO-CODIGO.md](docs/REVISAO-CODIGO.md).
 
-O código-fonte completo acompanha o pacote, em **codigo-fonte**. A pasta **extensao** contém os arquivos de produção para instalação.
+Este repositório contém o código-fonte completo; o ZIP de cada Release traz os arquivos de produção para instalação.
 
 Não associado, patrocinado ou endossado por Instagram ou Meta.
 

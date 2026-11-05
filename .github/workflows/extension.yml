@@ -1,4 +1,4 @@
-name: Extension
+name: Extensão
 
 on:
   push:
@@ -9,11 +9,11 @@ permissions:
   contents: read
 
 concurrency:
-  group: extension-${{ github.ref }}
+  group: extensao-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  check:
+  verificar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -28,15 +28,16 @@ jobs:
       - run: npm run lint
       - run: npm test
 
-      # Production build (no diagnostics page, no dev bridge) and a dev build.
+      # Compilação de produção (sem a página de diagnóstico e sem a ponte de
+      # desenvolvimento) e compilação de desenvolvimento.
       - run: npm run build
       - run: npm run build:dev
 
-      # The production bundle must never contain the dev bridge.
-      - name: Production build has no dev-only code
+      # O pacote de produção nunca pode conter a ponte de desenvolvimento.
+      - name: Produção sem código de desenvolvimento
         run: |
           if grep -rl "follower-tracker-dev" .output/chrome-mv3; then
-            echo "Dev bridge found in the production build" >&2
+            echo "Ponte de desenvolvimento encontrada no pacote de produção" >&2
             exit 1
           fi
           test ! -e .output/chrome-mv3/diagnostics.html
@@ -45,9 +46,8 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: elo-chrome
+          name: elo-instagram-chrome
           path: .output/*-chrome.zip
           if-no-files-found: error
-          # WXT writes to .output/, which the action skips by default as hidden.
+          # O WXT grava em .output/, que a action ignora por padrão por ser oculta.
           include-hidden-files: true
-

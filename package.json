@@ -1,5 +1,5 @@
 {
-  "name": "elo-instagram-manager",
+  "name": "elo-instagram",
   "private": true,
   "version": "0.1.1",
   "description": "Gerenciador local de seguidores do Instagram em portugu\u00eas, baseado em IgDiff (MIT).",

@@ -1,0 +1,47 @@
+name: Release
+
+# Compila a extensão e anexa o ZIP ao Release.
+# Funciona de dois jeitos: publicando um Release pela página do GitHub
+# ou enviando uma tag de versão (v0.2.2, v0.3.0...).
+on:
+  release:
+    types: [published]
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run zip
+
+      - name: Anexar o ZIP ao Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          versao="${tag#v}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" .output/*-chrome.zip --clobber
+          else
+            gh release create "$tag" .output/*-chrome.zip --title "elo Instagram ${versao}" \
+              --notes "Extensão compilada para Chrome e Edge. Baixe o ZIP, extraia numa pasta e carregue em chrome://extensions com Carregar sem compactação. Instruções no README."
+          fi
